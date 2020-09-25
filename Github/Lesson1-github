@@ -1,0 +1,19 @@
+1) Configuration
+git config --global user.name ""
+git config --global user.email ""
+
+2) Local Repository
+git init .    //create db git
+git status
+git add *
+git commit -m "message"
+git branch -M master
+git log   (git diff --staged)
+git checkout -- file   //discard changes
+.gitignore
+
+3) github
+git clone https://...git
+git push origin
+git remote add origin 
+git push -u origin master
