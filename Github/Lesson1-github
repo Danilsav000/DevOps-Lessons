@@ -25,3 +25,6 @@ git push -u origin master
 
 git checkout hash (git log) //вернуться на предидущие версии
              master         //вернуться обратно на master
+
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+ssh -T git@github.com
