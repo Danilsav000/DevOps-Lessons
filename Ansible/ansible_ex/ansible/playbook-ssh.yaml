@@ -1,0 +1,20 @@
+---
+- hosts: all
+  vars_files:
+    - vars/defaults.yaml
+  tasks: 
+
+    - name: Create "/{{ user }}/.ssh" directory
+      file:
+        path: "/{{ user }}/.ssh"
+        state: directory
+        mode: 0700
+
+    - name: Copy "Authorized keys" to hosts
+      copy:
+        src: ./ssh/authorized_keys
+        dest: "/{{ user }}/.ssh/authorized_keys"
+        mode: 0600
+
+
+  

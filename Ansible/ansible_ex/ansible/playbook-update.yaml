@@ -1,0 +1,22 @@
+- name: Update Hosts and install apache
+  hosts: all
+  become: yes
+
+  tasks:
+  - name: Update cache
+    dnf:
+      update_cache: yes
+
+  - name: Upgrade all packages
+    dnf:
+      name: "*" 
+      state: latest
+
+  - name: Uninstall unneeded packages
+    dnf:
+      autoremove: yes    
+
+  - name: Install apache
+    dnf:
+      name: httpd
+      state: latest    
