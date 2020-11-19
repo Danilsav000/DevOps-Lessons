@@ -1,0 +1,27 @@
+- name: Copy file
+  hosts: all
+  become: yes
+
+  vars:
+    file_src: ./ping.yaml
+    file_dest: /root/test
+
+
+  tasks:
+    - name: Ping
+      ping:
+
+    - name: Mkdir test
+      file:
+        path: /root/test
+        state: directory
+        mode: 0777
+
+    - name: Copy
+      copy:
+        src: "{{file_src}}"
+        dest: "{{file_dest}}"
+        mode: 0777
+
+
+   

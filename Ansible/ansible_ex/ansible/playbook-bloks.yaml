@@ -1,0 +1,30 @@
+- name: Test bloks
+  hosts: all
+  become: yes
+
+  vars:
+
+  tasks:
+
+  - block:
+
+    - name: Install packages
+      dnf:
+        pkg:
+          - tree
+          - nmon
+          - man
+        state: latest
+
+    - name: create folder
+      file:
+        path: /srv/folder1
+        state: directory
+
+    when: ansible_hostname == "root"
+
+  - name: copy file
+    copy:
+      src: testfile
+      dest: /srv/
+    when: ansible_hostname == "client03"

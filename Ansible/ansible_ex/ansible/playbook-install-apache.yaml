@@ -2,8 +2,13 @@
   hosts: hosts
   become: yes
 
+  vars:
+    packages:
+              - httpd
+              - tree
+              - rsync
   tasks:
   - name: Install apache
     dnf:
-      name: httpd
-      state: latest    
+      pkg: "{{ packages }}"
+      state: latest

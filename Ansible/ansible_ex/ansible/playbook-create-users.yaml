@@ -1,0 +1,29 @@
+- name: create user
+  hosts: all
+  become: yes
+
+  
+  tasks:
+    - name: Ping
+      ping:
+
+    - name: Create groups
+      group:
+        name: "{{item}}"
+        state: present
+      loop:
+        - dev
+        - test
+
+    - name: Create users
+      user:
+        name: "{{item.clientname}}"
+        shell: /bin/bash
+        groups: dev, test
+        append: yes
+        home: "/home/{{item.homedir}}"
+      with_items:
+        - {clientname: client01, homedir: client5}
+        - {clientname: client02, homedir: client6}
+        - {clientname: client03, homedir: client7}
+   
